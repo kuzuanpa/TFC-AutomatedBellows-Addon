@@ -27,71 +27,76 @@ public class RenderShield {
 	
 	public void render(EntityPlayer player, RenderPlayer renderModel, boolean shieldInHand, boolean isBlocking) {
 		GL11.glPushMatrix();
-		setupRender(player);
-		
-		if(shieldInHand) {
-			renderModel.modelBipedMain.bipedLeftArm.postRender(0.0625F);
-			GL11.glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
-			
-			if(isBlocking) {
-				GL11.glTranslatef(0.125f, 0.3125f, 0.275f);
+		try {
+			setupRender(player);
+
+			if (shieldInHand) {
+				renderModel.modelBipedMain.bipedLeftArm.postRender(0.0625F);
+				GL11.glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
+
+				if (isBlocking) {
+					GL11.glTranslatef(0.125f, 0.3125f, 0.275f);
+				} else {
+					GL11.glTranslatef(-0.125f, 0.5f, 0.2125f);
+				}
 			} else {
-				GL11.glTranslatef(-0.125f, 0.5f, 0.2125f);
+				renderModel.modelBipedMain.bipedBody.postRender(0.0625F);
+				GL11.glTranslatef(0.0f, 0.3125f, 0.25f);
+
 			}
-		} else {
-			renderModel.modelBipedMain.bipedBody.postRender(0.0625F);
-			GL11.glTranslatef(0.0f, 0.3125f, 0.25f);
-			
+
+			shield.render();
+		}catch (Exception ignored){}
+		finally {
+			GL11.glPopMatrix();
 		}
-
-		shield.render();
-
-		GL11.glPopMatrix();
 	}
 	
 	public void renderFirstPerson(EntityPlayer player, float tick, boolean isBlocking) {
 		GL11.glDisable(GL11.GL_DEPTH_TEST);
 		Minecraft.getMinecraft().entityRenderer.enableLightmap(tick);
 		GL11.glPushMatrix();
-		
-		setupRender(player);
+		try {
+			setupRender(player);
 
-		//Lighting
-		int brightness = player.worldObj.getLightBrightnessForSkyBlocks(MathHelper.floor_double(player.posX), MathHelper.floor_double(player.posY), MathHelper.floor_double(player.posZ), 0);
-        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) (brightness % 65536) / 1.0F, (float) (brightness / 65536) / 1.0F);
-        //GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		
-		//Rotate with camera
-		GL11.glRotatef(player.rotationYaw, 0.0f, -1.0f, 0.0f);
-		GL11.glRotatef(player.rotationPitch, 1.0f, 0.0f, 0.0f);
-		
-		//"Holding in a hand" effect
-		EntityPlayerSP playerSP = (EntityPlayerSP) player;
-		
-        float shieldPitch = playerSP.prevRenderArmPitch + (playerSP.renderArmPitch - playerSP.prevRenderArmPitch) * tick;
-        float shieldYaw = playerSP.prevRenderArmYaw + (playerSP.renderArmYaw - playerSP.prevRenderArmYaw) * tick;
-        GL11.glRotatef((player.rotationPitch - shieldPitch) * 0.1F, -1.0F, 0.0F, 0.0F);
-        GL11.glRotatef((player.rotationYaw - shieldYaw) * 0.1F, 0.0F, 1.0F, 0.0F);
-        
-        //"Blocked attack" effect
+			//Lighting
+			int brightness = player.worldObj.getLightBrightnessForSkyBlocks(MathHelper.floor_double(player.posX), MathHelper.floor_double(player.posY), MathHelper.floor_double(player.posZ), 0);
+			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) (brightness % 65536) / 1.0F, (float) (brightness / 65536) / 1.0F);
+			//GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+
+			//Rotate with camera
+			GL11.glRotatef(player.rotationYaw, 0.0f, -1.0f, 0.0f);
+			GL11.glRotatef(player.rotationPitch, 1.0f, 0.0f, 0.0f);
+
+			//"Holding in a hand" effect
+			EntityPlayerSP playerSP = (EntityPlayerSP) player;
+
+			float shieldPitch = playerSP.prevRenderArmPitch + (playerSP.renderArmPitch - playerSP.prevRenderArmPitch) * tick;
+			float shieldYaw = playerSP.prevRenderArmYaw + (playerSP.renderArmYaw - playerSP.prevRenderArmYaw) * tick;
+			GL11.glRotatef((player.rotationPitch - shieldPitch) * 0.1F, -1.0F, 0.0F, 0.0F);
+			GL11.glRotatef((player.rotationYaw - shieldYaw) * 0.1F, 0.0F, 1.0F, 0.0F);
+
+			//"Blocked attack" effect
         /*if(player.hurtResistantTime > 4 ) {
         	GL11.glTranslatef(-0.3f, 0.15f, -0.15f);
         }*/
 
-		//Positioning
-        if(isBlocking) {
-        	GL11.glTranslatef(0.35f, -0.65f, 0.45f);
-    		GL11.glRotatef(180, 0.02f, 0.0f, 1.0f);
-        } else {
-        	GL11.glTranslatef(0.75f, -0.85f, 0.6f);
-    		GL11.glRotatef(180, 0.05f, 0.0f, 1.0f);
-        }
+			//Positioning
+			if (isBlocking) {
+				GL11.glTranslatef(0.35f, -0.65f, 0.45f);
+				GL11.glRotatef(180, 0.02f, 0.0f, 1.0f);
+			} else {
+				GL11.glTranslatef(0.75f, -0.85f, 0.6f);
+				GL11.glRotatef(180, 0.05f, 0.0f, 1.0f);
+			}
 
-		shield.render();
-		
-		GL11.glPopMatrix();
-		Minecraft.getMinecraft().entityRenderer.disableLightmap(tick);
-		GL11.glEnable(GL11.GL_DEPTH_TEST);
+			shield.render();
+		}catch (Exception ignored){}
+		finally {
+			GL11.glPopMatrix();
+			Minecraft.getMinecraft().entityRenderer.disableLightmap(tick);
+			GL11.glEnable(GL11.GL_DEPTH_TEST);
+		}
 	}
 	
 	private void setupRender(EntityPlayer player) {
