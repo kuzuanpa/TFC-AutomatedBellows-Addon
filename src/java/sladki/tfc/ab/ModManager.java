@@ -192,23 +192,23 @@ public class ModManager {
 		manager.addPlan(metalShieldPlane, new PlanRecipe(new RuleEnum[]{RuleEnum.DRAWANY, RuleEnum.HITSECONDFROMLAST, RuleEnum.PUNCHLAST}));
 
 		int id = 0;
-		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.bismuthBronzeIngot2x), null, metalShieldPlane, false, AnvilReq.BISMUTHBRONZE,
+		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.bismuthBronzeIngot2x), null, metalShieldPlane, AnvilReq.BISMUTHBRONZE,
 				new ItemStack(shieldRegistry[id++], 1)).addRecipeSkill(Global.SKILL_ARMORSMITH));
-		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.blackBronzeIngot2x), null, metalShieldPlane, false, AnvilReq.BLACKBRONZE,
+		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.blackBronzeIngot2x), null, metalShieldPlane, AnvilReq.BLACKBRONZE,
 				new ItemStack(shieldRegistry[id++], 1)).addRecipeSkill(Global.SKILL_ARMORSMITH));
-		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.blackSteelIngot2x), null, metalShieldPlane, false, AnvilReq.BLACKSTEEL,
+		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.blackSteelIngot2x), null, metalShieldPlane, AnvilReq.BLACKSTEEL,
 				new ItemStack(shieldRegistry[id++], 1)).addRecipeSkill(Global.SKILL_ARMORSMITH));
-		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.blueSteelIngot2x), null, metalShieldPlane, false, AnvilReq.BLUESTEEL,
+		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.blueSteelIngot2x), null, metalShieldPlane, AnvilReq.BLUESTEEL,
 				new ItemStack(shieldRegistry[id++], 1)).addRecipeSkill(Global.SKILL_ARMORSMITH));
-		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.bronzeIngot2x), null, metalShieldPlane, false, AnvilReq.BRONZE,
+		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.bronzeIngot2x), null, metalShieldPlane, AnvilReq.BRONZE,
 				new ItemStack(shieldRegistry[id++], 1)).addRecipeSkill(Global.SKILL_ARMORSMITH));
-		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.copperIngot2x), null, metalShieldPlane, false, AnvilReq.COPPER,
+		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.copperIngot2x), null, metalShieldPlane, AnvilReq.COPPER,
 				new ItemStack(shieldRegistry[id++], 1)).addRecipeSkill(Global.SKILL_ARMORSMITH));
-		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.wroughtIronIngot2x), null, metalShieldPlane, false, AnvilReq.WROUGHTIRON,
+		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.wroughtIronIngot2x), null, metalShieldPlane, AnvilReq.WROUGHTIRON,
 				new ItemStack(shieldRegistry[id++], 1)).addRecipeSkill(Global.SKILL_ARMORSMITH));
-		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.redSteelIngot2x), null, metalShieldPlane, false, AnvilReq.REDSTEEL,
+		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.redSteelIngot2x), null, metalShieldPlane, AnvilReq.REDSTEEL,
 				new ItemStack(shieldRegistry[id++], 1)).addRecipeSkill(Global.SKILL_ARMORSMITH));
-		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.steelIngot2x), null, metalShieldPlane, false, AnvilReq.STEEL,
+		manager.addRecipe(new AnvilRecipe(new ItemStack(TFCItems.steelIngot2x), null, metalShieldPlane, AnvilReq.STEEL,
 				new ItemStack(shieldRegistry[id++], 1)).addRecipeSkill(Global.SKILL_ARMORSMITH));
 	}
 
