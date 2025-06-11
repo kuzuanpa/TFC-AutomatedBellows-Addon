@@ -14,6 +14,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
@@ -140,18 +141,18 @@ public class ModManager {
 					Character.valueOf('P'), new ItemStack(Blocks.piston)));
 			
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(steamBoilerBlock, 1, 0), " C ", "SBS", " C ",
-					Character.valueOf('C'), new ItemStack(TFCItems.clayBall, 0, 1),
+					Character.valueOf('C'), new ItemStack(Items.clay_ball, 0, 0),
 					Character.valueOf('S'), new ItemStack(TFCItems.wroughtIronSheet),
 					Character.valueOf('B'), new ItemStack(TFCBlocks.fireBrick)));
 		}
 		
 		if(ModConfig.PKEnabled) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(potteryKilnBlock, 1, 0), "BBB", "C C", "BBB",
-					Character.valueOf('C'), new ItemStack(TFCItems.clayBall, 0, 1),
+					Character.valueOf('C'), new ItemStack(Items.clay_ball, 0, 0),
 					Character.valueOf('B'), new ItemStack(TFCItems.fireBrick, 0, 1)));
 			
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(potteryKilnChamberBlock, 1, 0), "B B", "C C", "B B",
-					Character.valueOf('C'), new ItemStack(TFCItems.clayBall, 0, 1),
+					Character.valueOf('C'), new ItemStack(Items.clay_ball, 0, 0),
 					Character.valueOf('B'), new ItemStack(TFCItems.fireBrick, 0, 1)));
 		}
 		
